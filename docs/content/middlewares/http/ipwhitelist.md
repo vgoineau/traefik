@@ -20,6 +20,12 @@ labels:
   - "traefik.http.middlewares.test-ipwhitelist.ipwhitelist.sourcerange=127.0.0.1/32, 192.168.1.7"
 ```
 
+If your enviroment is in docker swarm, you need to use long syntax for your ports in Traefik container. You will need to declare mode: host, 
+so traefik can access IP's request. Without this long declaration, Traefik will give you 403 response for all request.
+
+
+
+
 ```yaml tab="Kubernetes"
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
